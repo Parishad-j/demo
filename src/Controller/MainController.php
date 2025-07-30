@@ -10,12 +10,26 @@ class MainController extends AbstractController
 {
     #[Route('/', name:'main_home', methods: ['GET'])]
     public function  home() : Response{
-        return new Response("<h1>Hello World!</h1>");
+        return $this->render('main/home.html.twig');
     }
 
     #[Route('/test', name:'main_test', methods: ['GET'])]
     public function  test() : Response{
-        return new Response("<h1>Hello Test</h1>");
+
+
+        $serie= [
+            'title'=> '<b>Geme of thrones</b>',
+        'year'=>'2010',
+        ];
+        $autreVar=1234;
+
+        /*return $this->render('main/test.html.twig',[
+        'serie'=>$serie,
+        'autreVar'=>$autreVar
+        ]);*/
+        return $this->render('main/test.html.twig', compact('serie',
+            'autreVar')
+        );
     }
 
 
